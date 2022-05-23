@@ -1,0 +1,32 @@
+frete = 0
+diesel = 6.56
+peças = int(input('Quantas peças serão transportadas?'))
+rastreamento = input('Deseja rastreamento? S/N')
+região = int(input('Selecione a região que deseja direcionar o frete: \n'
+                  '1- Sul \n2- Sudeste \n3- Centro-Oeste'))
+distancia = float(input('Distância em KM: '))
+diferença = peças - 1000
+if peças >= 1000 and região == 1:
+    frete = (1000 * 1.00) + (diferença * 0.12)
+
+if peças >= 1000 and região == 2:
+    frete = (1000 * 1.20) + (diferença * 1.056)
+
+if peças >= 1000 and região == 3:
+    frete = (1000 * 1.30) + (diferença * 0.169)
+
+if peças < 1000 and região == 1:
+        frete = (peças * 1.00)
+
+if peças < 1000 and região == 2:
+    frete = (peças * 1.20)
+
+if peças < 1000 and região == 3:
+    frete = (peças * 1.30)
+
+if rastreamento == 'S':
+    print(f"O valor total do frete com o rastreamento e valor do combustível é: R${frete + 200 + (distancia * diesel):.3f}")
+else:
+    print(f'O valor total do frete sem o rastreamento e valor do combustível é de: R${frete + (distancia * diesel):.3f}')
+print(f'Valor do frete pelas peças: R${frete:.3f}')
+print(f'Valor do frete por quilômetro: R${distancia *diesel:.3f}')
